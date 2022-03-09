@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>  
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+        <script type="text/javascript" src="{{url_for('static', filename='search.js')}}"></script>
+    </head>
+    <style>
+        header{
+            font-size: 100px;
+            font-weight: bold;
+            font-style: italic;
+            padding-left: 10px;
+            background-color: rgb(235, 231, 22);
+            color: rgb(185, 6, 6);
+            height: 200px;
+            padding-top: 10px;
+        }
+        #warn{
+            color: red;
+            margin: auto;
+            text-align: center;
+            font-size: large;
+        }
+        #brand{
+            color: rgb(235, 231, 22);
+            font-weight: bold;
+            font-size: xx-large;
+        }
+        #submit{
+            background-image: linear-gradient(rgb(4, 138, 216), rgb(0, 217, 255));
+            color: rgb(132, 247, 0);
+
+        }
+        .form-inline{
+            margin-left: 900px;
+        }
+        #add{
+            background-image: linear-gradient(rgb(4, 138, 216), rgb(0, 217, 255));
+            color: rgb(132, 247, 0);
+            height: 33px;
+            padding-top: 4px;
+            width: 120px;
+            text-align: center;
+        }
+        body{
+            background-color: rgb(235, 231, 22);
+        }
+    </style>
+    <body>
+        <div class="container-fluid">
+            <header>SuperCar-Z</header>
+            <nav class="navbar navbar-light">
+                <a class="navbar-brand" id="brand" href="/">SuperCar-Z</a>
+                <form class="form-inline" id="search_form">
+                    <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" required>
+                    <button id="submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">GO</button>
+                </form>
+                <a href="/add" id="add" class="rounded">Add New Car &#43;</a>
+            </nav>
+            <div id="warn"></div>
+        </div>
+        <div class="container-fluid">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

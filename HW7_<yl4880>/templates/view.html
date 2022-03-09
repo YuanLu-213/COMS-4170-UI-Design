@@ -1,0 +1,119 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<script type="text/javascript" src="{{url_for('static', filename='view.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<script>
+    var names = {{names|tojson}}
+    var item = {{item|tojson}}
+    var id = {{id | tojson}}
+</script>
+<style>
+    #tab_title{
+        font-weight: bold;
+    }
+    .row{
+        margin-bottom: 12px;
+    }
+    .container{
+        margin-top: 12px;
+    }
+    #title{
+        text-align: center;
+        font-weight: bold;
+    }
+    .view_image{
+        width: 35%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+    }
+    #tabs ul li.selected{
+        background-image: linear-gradient(rgb(207, 16, 16),rgb(247, 149, 149),rgb(207, 16, 16));
+        color: yellow;
+    }
+    #tabs a:hover {
+        background-image: linear-gradient(rgb(194, 8, 8), rgb(235, 129, 129), rgb(194, 8, 8));
+        color:yellow;
+    }
+    .ui-tabs-panel{
+        padding: 10px 10px 15px 15px;
+        text-align: justify;
+    }
+    #tab1{
+        font-weight: bold;
+    }
+    #tab2{
+        font-weight: bold;
+    }
+    #edit{
+        background-color: darkgray;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-7" id="image"></div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h1 id="title"></h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8" id="price">
+                            <h5>Price: </h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8" id="door">
+                            <h5>Doors: </h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="tabs" class="ui-tabs ui-corner-all ui-widget ui-widget-content">
+                                <ul role="tablist" class="ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header">
+                                    <li role="tab" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab">
+                                        <a id="tab1" class="ui-tabs-anchor" href="#tab-1">Description</a>
+                                    </li>
+                                    <li role="tab" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab">
+                                        <a id="tab2" class="ui-tabs-anchor" href="#tab-2">Specification</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="tab-1" role="tabpanel" class="ui-tabs-panel ui-widget-content">
+                                <p id="description"></p>
+                            </div>
+                            <div id="tab-2" role="tabpanel" class="ui-tabs-panel ui-widget-content">
+                                <p id="tab_title">Drive:</p>
+                                <p id="drive"></p>
+                                <br>
+                                <p id="tab_title">Engine:</p>
+                                <p id="engine"></p>
+                                <br>
+                                <p id="tab_title">Transmission:</p>
+                                <p id="transmission"></p>
+                                <br>
+                                <p id="tab_title">Fuel:</p>
+                                <p id="fuel"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9"></div>
+                        <div class="col-md-3">
+                            <button id="edit"><span class="glyphicon glyphicon-edit"></span>Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

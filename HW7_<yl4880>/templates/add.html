@@ -1,0 +1,163 @@
+{% extends 'nav.html'%}
+
+{% block content %}
+<script type="text/javascript" src="{{url_for('static', filename='add.js')}}"></script>
+<script>
+    var names = {{names | tojson}}
+</script>
+
+<style>
+    .row{
+        margin-top: 20px;
+    }
+    #add-car{
+        font-size:xx-large;
+        font-weight: bold;
+        text-align: center;
+        color: rgb(185, 6, 6);
+        font-style: italic;
+    }
+    button{
+        margin-top: 15px;
+        float: right;
+    }
+    .succeed{
+        text-align: center;
+    }
+    #success{
+        color: rgb(13, 126, 19);
+        font-size: large;
+    }
+    #new_car{
+        font-size: large;
+        font-weight: bold;
+    }
+    .last{
+        margin-bottom: 50px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="add-car">Add Your SUPER Car</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 succeed">
+            <div id="success"></div>
+        </div>
+    </div>
+
+    <form id="add-form" novalidate>
+        <div class="form-group row">
+            <div class="col-md-7" id="car-name">
+                <label class="form-group">Name</label>
+                <input type="text" class="form-control" id="input-name" placeholder="Make Model" required>
+                <div class="invalid-feedback name">
+                </div>
+            </div>
+            <div class="col-md-5">
+                <label class="form-group">Type</label>
+                <select id="car-type" class="form-control" required>
+                    <option selected value="0">Type</option>
+                    <option value="1">SUV</option>
+                    <option value="2">Sedan</option>
+                    <option value="3">Sports Sedan</option>
+                  </select>
+                <div class="invalid-feedback type">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Image URL</label>
+            <div class="col-md-10" id="car-image">
+              <input type="url" class="form-control" id="input-image" placeholder="Image URL" required>
+              <div class="invalid-feedback image">
+            </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Highlight URL</label>
+            <div class="col-md-10" id="car-highlight">
+              <input type="url" class="form-control" id="input-highlight" placeholder="Highlight URL" required>
+              <div class="invalid-feedback highlight">
+            </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Description</label>
+            <div class="col-md-10" id="car-des">
+              <input type="text" class="form-control" id="input-des" placeholder="Description" required>
+              <div class="invalid-feedback des">
+            </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4" id="car-price">
+                <label class="col-form-label">Price</label>
+                <input type="number" class="form-control" id="input-price" placeholder="Price" required>
+                <div class="invalid-feedback price">
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-4">
+                <label class="col-form-label">Doors</label>
+                <select id="car-door" class="form-control" required>
+                    <option selected value="0">Doors</option>
+                    <option value="1">2</option>
+                    <option value="2">4</option>
+                </select>
+                <div class="invalid-feedback door">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Drive</label>
+            <div class="col-md-6">
+                <select id="car-drive" class="form-control" required>
+                    <option selected value="0">Drive</option>
+                    <option value="1">All Wheel Drive</option>
+                    <option value="2">Rear Wheel Drive</option>
+                    <option value="3">Front Wheel Drive</option>
+                </select>
+                <div class="invalid-feedback drive">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Engine</label>
+            <div class="col-md-8" id="car-engine">
+              <input type="text" class="form-control" id="input-engine" placeholder="Engine" required>
+              <div class="invalid-feedback engine">
+            </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Transmission</label>
+            <div class="col-md-10" id="car-trans">
+              <input type="text" class="form-control" id="input-trans" placeholder="Transmission" required>
+              <div class="invalid-feedback trans">
+            </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Fuel</label>
+            <div class="col-md-6">
+                <select id="car-fuel" class="form-control" required>
+                    <option selected value="0">Fuel</option>
+                    <option value="1">Gasoline</option>
+                    <option value="2">Diesel</option>
+                    <option value="3">Elctricity</option>
+                </select>
+                <div class="invalid-feedback fuel">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+    <div class="row last"></div>
+</div>
+
+
+{% endblock %}

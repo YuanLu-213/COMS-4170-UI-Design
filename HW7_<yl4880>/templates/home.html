@@ -1,0 +1,71 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+<script type="text/javascript" src="{{url_for('static', filename='home.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<script>
+    var data = {{data | tojson}};
+    var names = {{names | tojson}};
+</script>
+<style>
+    #trending{
+        font-size:xx-large;
+        font-weight: bold;
+        color: rgb(185, 6, 6);
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-style: italic;
+        text-align: center;
+    }
+    .car{
+        height: 460px;
+    }
+    #cartitle{
+        text-align: center;
+        font-weight: bold;
+        font-size: x-large;
+    }
+    .car_img{
+        display: block;
+        max-height: 262px;
+        min-height: 262px;
+        width: 105%;
+    }
+    #type{
+        text-align: center;
+        font-weight: bold;
+        font-size: large;
+    }
+    #des{
+        display: block;
+        background-color: lightgray;
+        margin-left: auto;
+        margin-right: -20px;
+
+    }
+    #text{
+        display: block;
+        color: rgb(0, 0, 0);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+        position: relative; 
+        line-height: 20px;
+        max-height: 100px; 
+        text-align: justify;  
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+</style>
+
+<div class="container">
+    <div id="trending">SUPER Cars and SUPER Fans</div>
+    <div class="row row1"></div>
+</div>
+{% endblock %}

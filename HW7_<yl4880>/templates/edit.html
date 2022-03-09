@@ -1,0 +1,160 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+
+<script type="text/javascript" src="{{url_for('static', filename='edit.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<script>
+    var item = {{item | tojson}}
+</script>
+
+<style>
+    .row{
+        margin-top: 20px;
+    }
+    #edit-car{
+        font-size:xx-large;
+        font-weight: bold;
+        text-align: center;
+        color: rgb(185, 6, 6);
+        font-style: italic;
+    }
+    #submit-change{
+        margin-top: 15px;
+    }
+    #discard{
+        margin-top: 15px;
+        float: right;
+        background-color: darkgray;
+    }
+    .last{
+        margin-top: 50px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="edit-car"></div>
+        </div>
+    </div>
+    <form id="edit-form" novalidate>
+        <div class="form-group row">
+            <div class="col-md-7" id="car-name">
+                <label class="form-group">Name</label>
+                <input type="text" class="form-control" id="input-name" disabled>
+            </div>
+            <div class="col-md-5">
+                <label class="form-group">Type</label>
+                <select id="car-type" class="form-control" disabled>
+                    <option value="0">Type</option>
+                    <option value="1">SUV</option>
+                    <option value="2">Sedan</option>
+                    <option value="3">Sports Sedan</option>
+                  </select>
+                <div class="invalid-feedback type">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Image URL  <span class="glyphicon glyphicon-edit"></span></label>
+            <div class="col-md-10" id="car-image">
+              <input type="url" class="form-control" id="input-image" placeholder="Image URL" required>
+              <div class="invalid-feedback image">
+            </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Highlight URL  <span class="glyphicon glyphicon-edit"></span></label>
+            <div class="col-md-10" id="car-highlight">
+              <input type="url" class="form-control" id="input-highlight" placeholder="Highlight URL" required>
+              <div class="invalid-feedback highlight">
+            </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Description  <span class="glyphicon glyphicon-edit"></span></label>
+            <div class="col-md-10" id="car-des">
+              <input type="text" class="form-control" id="input-des" placeholder="Description" required>
+              <div class="invalid-feedback des">
+            </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4" id="car-price">
+                <label class="col-form-label">Price  <span class="glyphicon glyphicon-edit"></span></label>
+                <input type="number" class="form-control" id="input-price" placeholder="Price" required>
+                <div class="invalid-feedback price">
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-4">
+                <label class="col-form-label">Doors  <span class="glyphicon glyphicon-edit"></span></label>
+                <select id="car-door" class="form-control" required>
+                    <option selected value="0">Doors</option>
+                    <option value="1">2</option>
+                    <option value="2">4</option>
+                </select>
+                <div class="invalid-feedback door">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Drive <span class="glyphicon glyphicon-edit"></span></label>
+            <div class="col-md-6">
+                <select id="car-drive" class="form-control" required>
+                    <option selected value="0">Drive</option>
+                    <option value="1">All Wheel Drive</option>
+                    <option value="2">Rear Wheel Drive</option>
+                    <option value="3">Front Wheel Drive</option>
+                </select>
+                <div class="invalid-feedback drive">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Engine <span class="glyphicon glyphicon-edit"></span></label>
+            <div class="col-md-7" id="car-engine">
+                <input type="text" class="form-control" id="input-engine" placeholder="Engine" required>
+                <div class="invalid-feedback engine"></div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Transmission  <span class="glyphicon glyphicon-edit"></span></label>
+            <div class="col-md-10" id="car-trans">
+              <input type="text" class="form-control" id="input-trans" placeholder="Transmission" required>
+              <div class="invalid-feedback trans">
+            </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Fuel  <span class="glyphicon glyphicon-edit"></span></label>
+            <div class="col-md-6">
+                <select id="car-fuel" class="form-control" required>
+                    <option selected value="0">Fuel</option>
+                    <option value="1">Gasoline</option>
+                    <option value="2">Diesel</option>
+                    <option value="3">Elctricity</option>
+                </select>
+                <div class="invalid-feedback fuel">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7"></div>
+            <div class="col-md-2">
+                <button id="submit-change" class="btn btn-primary" type="submit">Submit</button>
+            </div>
+            <div class="col-md-2">
+                <button id="discard" class="btn btn-primary" type="submit">Discard</button>
+            </div>
+        </div>
+    </form>
+    <div id="dialog-confirm">
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Changes will not be saved. Are you sure?</p>
+    </div>
+    <div class="row last"></div>
+</div>
+{% endblock %}

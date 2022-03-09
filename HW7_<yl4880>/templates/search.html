@@ -1,0 +1,64 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+<script type="text/javascript" src="{{url_for('static', filename='result.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
+<script>
+    var names = {{names|tojson}}
+    var results = {{results|tojson}}
+    var keyword = {{keyword|tojson}}
+</script>
+<style>
+    #show_result{
+        font-weight: bold;
+        font-size: x-large;
+    }
+    #num-results{
+        font-weight: bold;
+        font-size: x-large;
+    }
+    .row{
+        margin-top: 20px;
+    }
+    .result_img {
+        display: block;
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        height: auto;
+    }
+    #result_name{
+        font-size: xx-large;
+        font-weight: bold;
+    }
+    #result_type{
+        font-size: x-large;
+        font-weight: bold;
+    }
+    #result_drive{
+        font-size: x-large;
+        font-weight: bold;
+    }
+    .highlight {
+        background-color: orange;
+        font-weight: bold;
+        border: solid;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div id="show_result"></div>
+    </div>
+    <div class="row">
+        <div id="num-results"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" id="result"></div>
+    </div>
+</div>
+{% endblock %}
